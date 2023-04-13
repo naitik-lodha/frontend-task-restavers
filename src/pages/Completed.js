@@ -10,7 +10,7 @@ const Completed = ({ todos, handleStatus }) => {
         <li key={todo.id} className="flex justify-center items-center">
           <p className="text-3xl">{todo.name}</p>
           <button
-            className="p-4 bg-red-600 m-2 rounded-lg text-white"
+            className="p-3 bg-red-600 m-2 ml-4 rounded-lg text-white"
             onClick={() => handleStatus(todo.id)}
           >
             Mark as Incomplete

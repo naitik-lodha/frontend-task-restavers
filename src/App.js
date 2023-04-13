@@ -6,8 +6,18 @@ import Header from "./myComponents/Header";
 import { useState, useEffect } from "react";
 
 function App() {
+  const getData = () => {
+    let localTodos = localStorage.getItem("todos");
+    console.log(localTodos);
+    if (localTodos) {
+      return JSON.parse(localTodos);
+    } else {
+      return [];
+    }
+  };
+
   const [newTodo, setNewTodo] = useState("");
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(getData);
 
   const handleStatus = (id) => {
     const updatedTodos = todos.map((todo) => {
@@ -24,8 +34,12 @@ function App() {
     setTodos(updatedTodos);
   };
 
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   return (
-    <>
+    <div className="font-Rajdhani">
       <Header
         newTodo={newTodo}
         setNewTodo={setNewTodo}
@@ -43,7 +57,7 @@ function App() {
           element={<Incomplete todos={todos} handleStatus={handleStatus} />}
         />
       </Routes>
-    </>
+    </div>
   );
 }
 

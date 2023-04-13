@@ -15,26 +15,29 @@ const Header = ({ newTodo, setNewTodo, todos, setTodos }) => {
     }
   };
   return (
-    <nav className="bg-black flex justify-evenly pt-4 text-white">
-      <Link className="text-6xl mx-4" to="/">
-        Todo
-      </Link>
-      <Link to="/completed">Completed</Link>
-      <Link to="/incomplete" className="mx-4">
-        Incomplete
-      </Link>
-      <input
-        className="ml-10 h-12 text-black"
-        value={newTodo}
-        onChange={handleInputChange}
-        placeholder="Eg. Cycling"
-      ></input>
-      <button
-        className="m-4 p-4 bg-white rounded-lg text-black"
-        onClick={handleAdd}
-      >
-        Add New Todo
-      </button>
+    <nav className="bg-black flex justify-around pt-4 text-white">
+      <div className="mx-4 mt-2 text-3xl">
+        <Link to="/completed" className="hover:text-yellow-300">
+          Completed
+        </Link>
+        <Link to="/incomplete" className="mx-8 hover:text-yellow-300">
+          Incomplete
+        </Link>
+      </div>
+      <div>
+        <input
+          className="ml-10 bg-transparent h-12 text-white rounded-lg border-2 border-solid border-white pl-3"
+          value={newTodo}
+          onChange={handleInputChange}
+          placeholder="Eg. Cycling"
+        ></input>
+        <button
+          className="m-4 mt-2 ml-2 p-3 rounded-lg bg-green-500 text-white"
+          onClick={handleAdd}
+        >
+          Add New Todo
+        </button>
+      </div>
     </nav>
   );
 };
